@@ -2,13 +2,26 @@
 {
     public class Rental
     {
-        public Rental(Movie movie, int daysRented)
+        public Movie Movie { get; }
+
+        public DateTime Start { get; }
+
+        public DateTime? End { get; }
+
+        public int DaysRented
         {
-            DaysRented = daysRented;
-            Movie = movie;
+            get => End is not null ? (End.Value - Start).Days : (DateTime.Now - Start).Days;
         }
 
-        public int DaysRented { get; }
-        public virtual Movie Movie { get; }
+        public Rental(Movie movie, DateTime start)
+        {
+            Movie = movie;
+            Start = start;
+        }
+
+        public Rental(Movie movie, DateTime start, DateTime? end) : this(movie, start)
+        {
+            End = end;
+        }
     }
 }

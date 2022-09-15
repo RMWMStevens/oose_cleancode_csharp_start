@@ -5,67 +5,70 @@ namespace OOSE.CleanCode.CSharp.VideoStore.Models
 {
     public class Customer
     {
-        private readonly List<Rental> _rentals = new List<Rental>();
+        public string Name { get; }
+
+        private readonly List<Rental> _rentals = new();
 
         public Customer(string name)
         {
             Name = name;
         }
 
-        public string Name { get; }
-
         public void AddRental(Rental rental)
         {
             _rentals.Add(rental);
         }
 
-        public string Statement()
+        public string GenerateStatement()
         {
-            var frequentRenterPoints = 0;
             var totalAmount = 0m;
-            var result = "Rental Record for " + Name + "\n";
+            var statement = "Rental Record for " + Name + "\n";
 
-            foreach (var each in _rentals)
+            foreach (var rental in _rentals)
             {
-                var thisAmount = 0m;
+                var amount = 0m;
 
                 // Determines the amount for each line
-                switch (each.Movie.PriceCode)
+                switch (rental.Movie.PriceCode)
                 {
                     case PriceCode.Regular:
-                        thisAmount += 2;
-                        if (each.DaysRented > 2)
+                        amount += 2;
+                        if (rental.DaysRented > 2)
                         {
-                            thisAmount += (each.DaysRented - 2) * 1.5m;
+                            amount += (rental.DaysRented - 2) * 1.5m;
                         }
                         break;
                     case PriceCode.NewRelease:
-                        thisAmount += each.DaysRented * 3;
+                        amount += rental.DaysRented * 3;
                         break;
                     case PriceCode.Children:
-                        thisAmount += 1.5m;
-                        if (each.DaysRented > 3)
+                        amount += 1.5m;
+                        if (rental.DaysRented > 3)
                         {
-                            thisAmount += (each.DaysRented - 3) * 1.5m;
+                            amount += (rental.DaysRented - 3) * 1.5m;
                         }
                         break;
                 }
 
+                statement += "\t" + rental.Movie.Title + "\t" + amount.ToString("0.0", CultureInfo.InvariantCulture) + "\n";
+                totalAmount += amount;
+            }
+
+            var frequentRenterPoints = 0;
+            foreach (var rental in _rentals)
+            {
                 frequentRenterPoints++;
 
-                if (each.Movie.PriceCode == PriceCode.NewRelease && each.DaysRented > 1)
+                if (rental.Movie.PriceCode == PriceCode.NewRelease && rental.DaysRented > 1)
                 {
                     frequentRenterPoints++;
                 }
-
-                result += "\t" + each.Movie.Title + "\t" + thisAmount.ToString("0.0", CultureInfo.InvariantCulture) + "\n";
-                totalAmount += thisAmount;
             }
 
-            result += "You owed " + totalAmount.ToString("0.0", CultureInfo.InvariantCulture) + "\n";
-            result += "You earned " + frequentRenterPoints.ToString() + " frequent renter points \n";
+            statement += $"You owed {totalAmount.ToString("0.0", CultureInfo.InvariantCulture)}\n";
+            statement += $"You earned {frequentRenterPoints} frequent renter points \n";
 
-            return result;
+            return statement;
         }
     }
 }
