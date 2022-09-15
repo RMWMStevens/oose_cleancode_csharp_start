@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.32804.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOSE.CleanCode.CSharp.VideoStore", "OOSE.CleanCode.CSharp.VideoStore\OOSE.CleanCode.CSharp.VideoStore.csproj", "{F029D53A-E123-4321-886E-FE4E1DAD12B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOSE.CleanCode.CSharp.VideoStore.Tests", "OOSE.CleanCode.CSharp.VideoStore.Tests\OOSE.CleanCode.CSharp.VideoStore.Tests.csproj", "{BC75AA0E-3214-4AA1-B97D-C09410C003D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOSE.CleanCode.CSharp.VideoStore.Tests", "OOSE.CleanCode.CSharp.VideoStore.Tests\OOSE.CleanCode.CSharp.VideoStore.Tests.csproj", "{BC75AA0E-3214-4AA1-B97D-C09410C003D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

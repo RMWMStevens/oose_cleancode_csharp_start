@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOSE.CleanCode.CSharp.VideoStore
+﻿namespace OOSE.CleanCode.CSharp.VideoStore
 {
     public class Movie
     {
@@ -20,6 +14,5 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
         public int PriceCode { get; set; }
         public virtual string Title { get; }
-
     }
 }

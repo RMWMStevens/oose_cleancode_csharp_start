@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace OOSE.CleanCode.CSharp.VideoStore
 {
@@ -18,7 +13,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
         public string Name { get; }
 
-        public void AddRental(Rental rental) 
+        public void AddRental(Rental rental)
         {
             _rentals.Add(rental);
         }
@@ -33,7 +28,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
             {
                 var thisAmount = 0m;
 
-                //dtermines the amount for each line
+                // Determines the amount for each line
                 switch (each.Movie.PriceCode)
                 {
                     case Movie.REGULAR:
@@ -53,7 +48,6 @@ namespace OOSE.CleanCode.CSharp.VideoStore
                             thisAmount += (each.DaysRented - 3) * 1.5m;
                         }
                         break;
-
                 }
 
                 frequentRenterPoints++;
@@ -72,6 +66,5 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
             return result;
         }
-
     }
 }
