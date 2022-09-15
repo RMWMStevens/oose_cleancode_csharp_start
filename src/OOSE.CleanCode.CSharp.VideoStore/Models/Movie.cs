@@ -1,17 +1,15 @@
-﻿using OOSE.CleanCode.CSharp.VideoStore.Enums;
-
-namespace OOSE.CleanCode.CSharp.VideoStore.Models
+﻿namespace OOSE.CleanCode.CSharp.VideoStore.Models
 {
     public class Movie
     {
         public string Title { get; }
 
-        public PriceCode PriceCode { get; set; }
+        public Price Price { get; set; }
 
-        public Movie(string title, PriceCode priceCode)
+        public Movie(string title, Price price)
         {
             Title = title;
-            PriceCode = priceCode;
+            Price = price;
         }
     }
 }

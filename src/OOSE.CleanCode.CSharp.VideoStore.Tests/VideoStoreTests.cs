@@ -1,5 +1,4 @@
-﻿using OOSE.CleanCode.CSharp.VideoStore.Enums;
-using OOSE.CleanCode.CSharp.VideoStore.Models;
+﻿using OOSE.CleanCode.CSharp.VideoStore.Models;
 
 namespace OOSE.CleanCode.CSharp.VideoStore.Tests
 {
@@ -15,7 +14,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore.Tests
         [Fact]
         public void TestSingleNewReleaseStatement()
         {
-            _customer.AddRental(new Rental(new Movie("The cell", PriceCode.NewRelease),
+            _customer.AddRental(new Rental(new Movie("The cell", new NewReleasePrice()),
                                            DateTime.Now.AddDays(-3),
                                            DateTime.Now));
 
@@ -26,10 +25,10 @@ namespace OOSE.CleanCode.CSharp.VideoStore.Tests
         [Fact]
         public void TestDualNewReleaseStatement()
         {
-            _customer.AddRental(new Rental(new Movie("The cell", PriceCode.NewRelease),
+            _customer.AddRental(new Rental(new Movie("The cell", new NewReleasePrice()),
                                            DateTime.Now.AddDays(-3),
                                            DateTime.Now));
-            _customer.AddRental(new Rental(new Movie("The Tigger Movie", PriceCode.NewRelease),
+            _customer.AddRental(new Rental(new Movie("The Tigger Movie", new NewReleasePrice()),
                                            DateTime.Now.AddDays(-3),
                                            DateTime.Now));
 
@@ -40,7 +39,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore.Tests
         [Fact]
         public void TestSingleChildrensStatement()
         {
-            _customer.AddRental(new Rental(new Movie("The Tigger Movie", PriceCode.Children),
+            _customer.AddRental(new Rental(new Movie("The Tigger Movie", new ChildrensPrice()),
                                            DateTime.Now.AddDays(-3),
                                            DateTime.Now));
 
@@ -51,13 +50,13 @@ namespace OOSE.CleanCode.CSharp.VideoStore.Tests
         [Fact]
         public void TestMultipleRegularStatement()
         {
-            _customer.AddRental(new Rental(new Movie("Plan 9 from Outer Space", PriceCode.Regular),
+            _customer.AddRental(new Rental(new Movie("Plan 9 from Outer Space", new RegularPrice()),
                                            DateTime.Now.AddDays(-1),
                                            DateTime.Now));
-            _customer.AddRental(new Rental(new Movie("8 1/2", PriceCode.Regular),
+            _customer.AddRental(new Rental(new Movie("8 1/2", new RegularPrice()),
                                            DateTime.Now.AddDays(-2),
                                            DateTime.Now));
-            _customer.AddRental(new Rental(new Movie("Eraserhead", PriceCode.Regular),
+            _customer.AddRental(new Rental(new Movie("Eraserhead", new RegularPrice()),
                                            DateTime.Now.AddDays(-3),
                                            DateTime.Now));
 
