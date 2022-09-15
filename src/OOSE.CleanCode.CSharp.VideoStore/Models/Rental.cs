@@ -1,4 +1,4 @@
-﻿namespace OOSE.CleanCode.CSharp.VideoStore
+﻿namespace OOSE.CleanCode.CSharp.VideoStore.Models
 {
     public class Rental
     {

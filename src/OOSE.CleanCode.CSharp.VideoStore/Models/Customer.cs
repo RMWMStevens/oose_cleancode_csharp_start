@@ -1,6 +1,7 @@
-﻿using System.Globalization;
+﻿using OOSE.CleanCode.CSharp.VideoStore.Enums;
+using System.Globalization;
 
-namespace OOSE.CleanCode.CSharp.VideoStore
+namespace OOSE.CleanCode.CSharp.VideoStore.Models
 {
     public class Customer
     {
@@ -31,17 +32,17 @@ namespace OOSE.CleanCode.CSharp.VideoStore
                 // Determines the amount for each line
                 switch (each.Movie.PriceCode)
                 {
-                    case Movie.REGULAR:
+                    case PriceCode.Regular:
                         thisAmount += 2;
                         if (each.DaysRented > 2)
                         {
                             thisAmount += (each.DaysRented - 2) * 1.5m;
                         }
                         break;
-                    case Movie.NEW_RELEASE:
+                    case PriceCode.NewRelease:
                         thisAmount += each.DaysRented * 3;
                         break;
-                    case Movie.CHILDREN:
+                    case PriceCode.Children:
                         thisAmount += 1.5m;
                         if (each.DaysRented > 3)
                         {
@@ -52,7 +53,7 @@ namespace OOSE.CleanCode.CSharp.VideoStore
 
                 frequentRenterPoints++;
 
-                if (each.Movie.PriceCode == Movie.NEW_RELEASE && each.DaysRented > 1)
+                if (each.Movie.PriceCode == PriceCode.NewRelease && each.DaysRented > 1)
                 {
                     frequentRenterPoints++;
                 }
